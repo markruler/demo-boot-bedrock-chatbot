@@ -1,5 +1,6 @@
-package com.example.demo.chat;
+package com.example.demo.chat.client;
 
+import com.example.demo.chat.ChatRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.ChatClient;
@@ -8,7 +9,7 @@ import org.springframework.stereotype.Service;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class ChatService {
+public class ChatClientService {
 
     private final ChatClient chatClient;
 

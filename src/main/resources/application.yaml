@@ -8,12 +8,26 @@ spring:
         # access-key: ${AWS_ACCESS_KEY_ID} # 환경 변수나 ~/.aws/credentials 사용 권장
         # secret-key: ${AWS_SECRET_ACCESS_KEY}
       converse:
+        # Bedrock chat client
         chat:
           enabled: true
           options:
             model: us.amazon.nova-lite-v1:0
 
+# Bedrock Agent
+chat:
+  agent:
+    id: ${BEDROCK_AGENT_ID}
+    alias: ${BEDROCK_AGENT_ALIAS}
+
 logging:
   level:
     root: debug
+    io.netty: info
     com.example: debug
+    org:
+      springframework:
+        boot:
+          autoconfigure: info
+    sun.rmi: info
+    javax.management.remote.rmi: info
