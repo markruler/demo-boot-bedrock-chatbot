@@ -29,6 +29,8 @@ public class BedrockAgentService {
 
     private final BedrockAgentRuntimeAsyncClient bedrockAgentRuntimeAsyncClient;
 
+    private static final int FUTURE_TIMEOUT_SECONDS = 30;
+
     public String chatWithAgent(ChatRequest request) {
         String sessionId = UUID.randomUUID().toString();
 
@@ -56,7 +58,7 @@ public class BedrockAgentService {
 
         try {
             // @see BedrockAgentConfig
-            future.get(180, TimeUnit.SECONDS);
+            future.get(FUTURE_TIMEOUT_SECONDS, TimeUnit.SECONDS);
             return responseBuilder.toString();
         } catch (TimeoutException e) {
             log.error("Timeout while waiting for Bedrock Agent response", e);
